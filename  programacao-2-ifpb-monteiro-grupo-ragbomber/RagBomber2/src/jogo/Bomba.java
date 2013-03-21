@@ -12,19 +12,21 @@ public class Bomba {
 	private int x,  largura;
 	private int y, altura;
 	private Explosao explosao;
-	private boolean explosaoIsVisible;
+	private boolean explosaoIsVisivel;
 	private int rangeExplosao;
+	private boolean bombaIsVisivel;
 
 	public Bomba(int x, int y, int rangeExplosao){
 		
 			this.x = corrigirPosicao(x);
 			this.y = corrigirPosicao(y);
 			
-			this.explosaoIsVisible = false;
+			this.explosaoIsVisivel = false;
+			this.bombaIsVisivel = true;
 			
 			this.rangeExplosao = rangeExplosao;
 			
-			ImageIcon referencia = new ImageIcon("Imagens\\bomba.png");
+			ImageIcon referencia = new ImageIcon("Imagens\\Bomba.gif");
 			bombaImagem = referencia.getImage();
 			
 			this.largura = bombaImagem.getWidth(null);
@@ -32,16 +34,17 @@ public class Bomba {
 			
 			// Contagem regressiva para a bomba explodir
 			Timer timer = new Timer();
-		    int contRegressiva = 3000;
+		    int contRegressiva = 3500;
 			timer.schedule(new RemindTask(), contRegressiva);
 						
 	}
 	
-	private class RemindTask extends TimerTask {
+	public class RemindTask extends TimerTask {
 	    public void run() {
 	    	
-	    	explodir();
-	    	explosaoIsVisible = true;
+	    	bombaIsVisivel = false;
+	    	explodir(); 
+	    	
 	      }
 	    }
 	
@@ -61,8 +64,9 @@ public class Bomba {
 	}
 	
 	public void explodir(){
-		explosao = new Explosao(getX(),getY(),getRangeExplosao());
 		
+		explosao = new Explosao(getX(),getY(),getRangeExplosao());
+		explosaoIsVisivel = true;
 	}
 	
 	
@@ -94,11 +98,19 @@ public class Bomba {
 		return rangeExplosao;
 	}
 	public boolean isExplosaoIsVisible() {
-		return explosaoIsVisible;
+		return explosaoIsVisivel;
 	}
 
 	public void setExplosaoIsVisible(boolean explosaoIsVisible) {
-		this.explosaoIsVisible = explosaoIsVisible;
+		this.explosaoIsVisivel = explosaoIsVisible;
+	}
+	
+	public boolean isBombaIsVisivel() {
+		return bombaIsVisivel;
+	}
+
+	public void setBombaIsVisivel(boolean bombaIsVisivel) {
+		this.bombaIsVisivel = bombaIsVisivel;
 	}
 
 

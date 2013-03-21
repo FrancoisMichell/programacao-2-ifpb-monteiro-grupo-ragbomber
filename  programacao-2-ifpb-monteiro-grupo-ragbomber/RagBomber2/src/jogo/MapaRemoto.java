@@ -1,5 +1,6 @@
 package jogo;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class MapaRemoto extends Mapa {
@@ -8,7 +9,12 @@ public class MapaRemoto extends Mapa {
 	
 	@Override
 	public void gerarBlocosDestrutiveis() {
-		server.gerarBlocosDestrutiveis();
+		try {
+			server.gerarBlocosDestrutiveis();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		super.gerarBlocosDestrutiveis();
 	}
 	

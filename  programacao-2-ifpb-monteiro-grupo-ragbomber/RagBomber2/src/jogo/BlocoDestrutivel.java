@@ -24,7 +24,7 @@ public class BlocoDestrutivel {
 	}
 	public void gerarUpgrade(){
 		
-		int gerarUpgrade = (int) (1+Math.random()*3);
+		int gerarUpgrade = (int) (1+Math.random()*2);
 		if(gerarUpgrade == 1){
 			upgrade = new Upgrade(getX(), getY());
 			
