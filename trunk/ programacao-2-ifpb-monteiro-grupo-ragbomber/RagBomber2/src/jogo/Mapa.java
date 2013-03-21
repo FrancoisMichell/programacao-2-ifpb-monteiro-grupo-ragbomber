@@ -2,6 +2,7 @@ package jogo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Vector;
 
 
 
@@ -81,7 +82,7 @@ public class Mapa {
 		coordenadasMapa.removerCoordenadas(x, y);
 	}
 	public void gerarBlocosDestrutiveis(){
-		int numeroDeBlocosDestru = 60;
+		int numeroDeBlocosDestru = 10;
 		destrutiveis = new ArrayList<BlocoDestrutivel>();
 		Collections.shuffle(coordenadasMapa.getCoordenadasMapa());
 		for(int i = 0; i < numeroDeBlocosDestru ; i++){
@@ -105,5 +106,8 @@ public class Mapa {
 	public ArrayList<Upgrade> getUpgrades() {
 		return upgrades;
 	}
+	
+
+
 
 }

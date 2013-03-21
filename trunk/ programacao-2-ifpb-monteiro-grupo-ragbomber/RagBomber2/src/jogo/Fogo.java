@@ -15,7 +15,7 @@ public class Fogo {
 		this.x = x;
 		this.y = y;
 		
-		ImageIcon referencia = new ImageIcon("Imagens\\fogo.png");
+		ImageIcon referencia = new ImageIcon("Imagens\\fire.png");
 		fogoImagem = referencia.getImage();
 		
 		this.largura = 40;

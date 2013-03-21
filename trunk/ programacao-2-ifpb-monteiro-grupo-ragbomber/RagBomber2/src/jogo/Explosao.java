@@ -7,6 +7,7 @@ import java.util.TimerTask;
 public class Explosao {
 
 	private ArrayList<Fogo> fogos;
+	private ArrayList<Fogo> fogoCentro;
 	private ArrayList<Fogo> fogosDireita;
 	private ArrayList<Fogo> fogosEsquerda;
 	private ArrayList<Fogo> fogosCima;
@@ -21,7 +22,7 @@ public class Explosao {
 		fogos = new ArrayList<Fogo>();
 		criarExplosao();
 		Timer timer = new Timer();
-		int tempoEmChamas = 1000;
+		int tempoEmChamas = 500;
 		timer.schedule(new RemindTask(), tempoEmChamas);
 
 	}
@@ -31,6 +32,7 @@ public class Explosao {
 		fogos.addAll(gerarFogoEsquerda());
 		fogos.addAll(gerarFogoCima());
 		fogos.addAll(gerarFogoBaixo());
+		fogos.addAll(gerarFogoCentro());
 	}
 
 	private class RemindTask extends TimerTask {
@@ -44,8 +46,15 @@ public class Explosao {
 
 	}
 	
+	public ArrayList<Fogo> gerarFogoCentro(){
+		fogoCentro = new ArrayList<Fogo>();
+		Fogo fogoNoCentro = new Fogo(getX(), getY());
+		fogoCentro.add(fogoNoCentro);
+		return fogoCentro;
+	}
+	
 	public  ArrayList<Fogo> gerarFogoDireita() {
-		int x = 0;
+		int x = 40;
 		fogosDireita = new ArrayList<Fogo>();
 		for (int i = 0; i <= getRangeExplosao(); i++) {
 			Fogo fogoDireita = new Fogo(getX() + x, getY());
@@ -106,6 +115,9 @@ public class Explosao {
 
 	public void setFogosBaixo(ArrayList<Fogo> fogosBaixo) {
 		this.fogosBaixo = fogosBaixo;
+	}
+	public ArrayList<Fogo> getFogoCentro() {
+		return fogoCentro;
 	}
 
 
